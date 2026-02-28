@@ -1,17 +1,42 @@
 package com.example.ProyectoSpendy.modelos;
 
-public class Gasto {
-     private Long id;
-     private String nit;
-     private String nombre;
-     private String actividad;
-     private String correo;
-     private String direccionComercio; // dirección del comercio donde acude el usuario
-     private Boolean esFrecuente; // indica si el cliente es frecuente en el comercio correspondiente
-     private String rangoPrecios;   // determinar la cantidad de precios que hay en el comercio
-     private String metodoPago;  // ya sea tarjeta, transferencia, efectivo,etc.
-     private String telefonoContacto;  // el télefono donde pude contactar
+import jakarta.persistence.*; // Importa todas las herramientas de JPA
 
+@Entity
+@Table(name = "gastos") // Define el nombre de la tabla en la Bd
+public class Gasto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Genera el ID automáticamente
+    private Long id;
+    private String descripcion;   //descripción del gasto correspondiente
+    private String fecha; // fecha en que se realiza el ggasto
+    private Double valor; // lo que cuesta cada ggasto
+    private String icono;  // el icono correspondiente a cada gasto que realiza
+    private String categoria;  // Para saber si es comida, transporte, etc
+    private String metodoPago; //Para saber si fue efectivo, tarjeta, etc.
+    private Boolean esNecesario;//  Para diferenciar gastos obligatorios de "antojos" si o no.
+    private String comercio; //Nombre del lugar donde se hizo el gasto.
+    private String ubicacion; // ubicación real donde se realizó.
+
+    // Constructor Vacío
+    public Gasto() {}
+
+    // Constructor con parámetros
+    public Gasto(Long id, String descripcion, String fecha, Double valor, String icono, String categoria, String metodoPago, Boolean esNecesario, String comercio, String ubicacion) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.valor = valor;
+        this.icono = icono;
+        this.categoria = categoria;
+        this.metodoPago = metodoPago;
+        this.esNecesario = esNecesario;
+        this.comercio = comercio;
+        this.ubicacion = ubicacion;
+    }
+
+    //getters y setters
     public Long getId() {
         return id;
     }
@@ -20,60 +45,44 @@ public class Gasto {
         this.id = id;
     }
 
-    public String getNit() {
-        return nit;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNit(String nit) {
-        this.nit = nit;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getActividad() {
-        return actividad;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setActividad(String actividad) {
-        this.actividad = actividad;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getIcono() {
+        return icono;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setIcono(String icono) {
+        this.icono = icono;
     }
 
-    public String getDireccionComercio() {
-        return direccionComercio;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setDireccionComercio(String direccionComercio) {
-        this.direccionComercio = direccionComercio;
-    }
-
-    public Boolean getEsFrecuente() {
-        return esFrecuente;
-    }
-
-    public void setEsFrecuente(Boolean esFrecuente) {
-        this.esFrecuente = esFrecuente;
-    }
-
-    public String getRangoPrecios() {
-        return rangoPrecios;
-    }
-
-    public void setRangoPrecios(String rangoPrecios) {
-        this.rangoPrecios = rangoPrecios;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getMetodoPago() {
@@ -84,11 +93,29 @@ public class Gasto {
         this.metodoPago = metodoPago;
     }
 
-    public String getTelefonoContacto() {
-        return telefonoContacto;
+    public Boolean getEsNecesario() {
+        return esNecesario;
     }
 
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
+    public void setEsNecesario(Boolean esNecesario) {
+        this.esNecesario = esNecesario;
     }
+
+    public String getComercio() {
+        return comercio;
+    }
+
+    public void setComercio(String comercio) {
+        this.comercio = comercio;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+
 }

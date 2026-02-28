@@ -1,6 +1,13 @@
 package com.example.ProyectoSpendy.modelos;
 
+import jakarta.persistence.*; // Importación necesaria para las anotaciones
+
+@Entity
+@Table(name = "categorias")
 public class Categoria {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String nombre;
         private String fechaCreacion;
@@ -12,6 +19,24 @@ public class Categoria {
         private Boolean esNecesario; // indica si es necesario o no
         private Double topeMensual; // mira la cantidad donde se puede gastar en un mes
 
+    // constructor vacio
+    public Categoria() {}   // constructor vacio
+
+    // Constructor con parámetros
+    public Categoria(Long id, String nombre, String fechaCreacion, String responsable, String justificacion, String descripcion, String tipoGasto, String iconoGasto, Boolean esNecesario, Double topeMensual) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+        this.responsable = responsable;
+        this.justificacion = justificacion;
+        this.descripcion = descripcion;
+        this.tipoGasto = tipoGasto;
+        this.iconoGasto = iconoGasto;
+        this.esNecesario = esNecesario;
+        this.topeMensual = topeMensual;
+    }
+
+    // getters y setters
     public Long getId() {
         return id;
     }

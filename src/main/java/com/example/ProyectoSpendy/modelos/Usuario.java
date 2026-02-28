@@ -1,7 +1,14 @@
 package com.example.ProyectoSpendy.modelos;
 
+import jakarta.persistence.*; // Importa todas las herramientas de Jakarta
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
-   private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
    private String nombres;
    private String tipoDocumento;
    private String nroDocumento;
@@ -12,7 +19,23 @@ public class Usuario {
    private String fotoPerfil;  //muestra su foto de perfil
    private String ciudadDomicilio;  //la ciudad en doonde vive
 
+    // 1.constructor vacio
+    public Usuario() {}
 
+    // 2. Constructor con parámetros
+    public Usuario(Long id, String nombres, String tipoDocumento, String nroDocumento, Integer edad, String direccion, String celular, String ultimoIngreso, String fotoPerfil, String ciudadDomicilio) {
+        this.id = id;
+        this.nombres = nombres;
+        this.tipoDocumento = tipoDocumento;
+        this.nroDocumento = nroDocumento;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.ultimoIngreso = ultimoIngreso;
+        this.fotoPerfil = fotoPerfil;
+        this.ciudadDomicilio = ciudadDomicilio;
+    }
+    //getters y setters
     public Long getId() {
         return id;
     }
