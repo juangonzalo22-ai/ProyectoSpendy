@@ -50,7 +50,7 @@ Proyecto dividido en:
 
 &nbsp;
 
-&nbsp;🚀 Cómo ejecutar el Frontend
+&nbsp; Cómo ejecutar el Frontend
 
 
 
